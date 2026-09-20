@@ -1,7 +1,8 @@
 # How to Create a Bootable Armbian Image for Rockchip RK3318
 
 This guide explains how to prepare and flash an **Armbian image** to a Rockchip RK3318/RK3228 TV Box using **Multitool**.
-
+Refer detail : 
+https://vnhass.blogspot.com/2026/09/how-to-create-bootable-armbian-image.html
 ---
 
 ## 🧰 Requirements
