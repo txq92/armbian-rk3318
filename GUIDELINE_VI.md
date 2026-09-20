@@ -109,7 +109,7 @@ Nếu muốn cấu hình nhanh qua một dòng lệnh mà không cần qua menu:
 
 2. Gán IP tĩnh (thay `"Wired connection 1"` bằng tên kết nối mạng của bạn):
    ```bash
-   sudo nmcli connection modify "Wired connection 1" \
+   sudo nmcli connection modify "netplan-eth0" \
      ipv4.method manual \
      ipv4.addresses 192.168.1.100/24 \
      ipv4.gateway 192.168.1.1 \
@@ -118,7 +118,7 @@ Nếu muốn cấu hình nhanh qua một dòng lệnh mà không cần qua menu:
 
 3. Áp dụng ngay kết nối:
    ```bash
-   sudo nmcli connection up "Wired connection 1"
+   sudo nmcli connection up "netplan-eth0"
    ```
 
 ---
