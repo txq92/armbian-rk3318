@@ -10,7 +10,7 @@
 |---|---|
 | Máy chủ | Armbian ARM64, IP `192.168.1.234` |
 | Home Assistant | Docker, `network_mode: host` |
-| MCP URL | `http://192.168.1.234/api/mcp` (đúng theo URL đã cung cấp) |
+| MCP URL | `http://192.168.1.234:8123/api/mcp` |
 | HA Web URL | Xác minh thực tế: thường là `http://192.168.1.234:8123` |
 | Agent | Codex CLI đăng nhập ChatGPT |
 | Điều khiển | Telegram Bot (long polling) |
@@ -25,7 +25,7 @@ ssh root@192.168.1.234
 uname -m
 docker compose version
 docker ps --format 'table {{.Names}}\t{{.Status}}\t{{.Ports}}'
-curl -i http://192.168.1.234/api/mcp
+curl -i http://192.168.1.234:8123/api/mcp
 ```
 
 GET có thể trả `405 Method Not Allowed` với MCP Streamable HTTP; đó chưa phải bằng chứng endpoint lỗi. Không công khai cổng MCP ra Internet.
@@ -53,7 +53,7 @@ Không mount thư mục `/root/hass/config` hoặc Docker socket vào bot trong 
 ```dotenv
 TELEGRAM_BOT_TOKEN=REPLACE_ME
 TELEGRAM_USER_ID=123456789
-HA_MCP_URL=http://192.168.1.234/api/mcp
+HA_MCP_URL=http://192.168.1.234:8123/api/mcp
 HA_MCP_TOKEN=REPLACE_ME
 HA_URL=http://192.168.1.234:8123
 CODEX_HOME=/home/agent/.codex
@@ -141,7 +141,7 @@ Tạo `codex-data/config.toml`:
 
 ```toml
 [mcp_servers.homeassistant]
-url = "http://192.168.1.234/api/mcp"
+url = "http://192.168.1.234:8123/api/mcp"
 bearer_token_env_var = "HA_MCP_TOKEN"
 ```
 
